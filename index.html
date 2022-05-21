@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main_page</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="nav-bar">
+      <div class="open-side-menu">
+        <button class="open">
+          <div class="menu-bar"></div>
+          <div class="menu-bar"></div>
+          <div class="menu-bar"></div>
+        </button>
+      </div>
+      <div class="title"><h1 class="title-text">Surfy</h1></div>
+      <div class="right-navbar-part">
+        <div class="add-spot">
+          <button class="add-spots-btn">ADD SPOTS</button>
+        </div>
+        <div class="logout">
+          <button class="img-user">
+            <img src="/images/user_logo.png" alt="" class="image-user" />
+          </button>
+          <button class="logout-btn"></button>
+        </div>
+      </div>
+    </div>
+    <div class="side-menu">
+      <div class="close">
+        <!-- <div class="side-menu.title-div">
+          <h1 class="side-menu-title">MENU</h1>
+        </div> -->
+        <div class="side-menu-close-btn">
+          <button class="close-side-menu">X</button>
+        </div>
+      </div>
+      <div class="user-image-div">
+        <img src="/images/user-circle.png" alt="" class="user-image" />
+      </div>
+      <div class="user-name"></div>
+      <div class="side-menu-options">
+        <div class="option chat">
+          <img src="images/chat-4-32.png" alt="" class="option-image" />
+          <button class="open-option chat-btn">CHAT</button>
+        </div>
+        <div class="option account">
+          <img src="images/user-32.png" alt="" class="option-image" />
+          <button class="open-option account-btn">ACCOUNT</button>
+        </div>
+        <div class="option chat">
+          <img src="images/phone-2-32.png" alt="" class="option-image" />
+          <button class="open-option">CONTACT</button>
+        </div>
+        <div class="option settings">
+          <img src="images/settings-5-32.png" alt="" class="option-image" />
+          <button class="open-option settings-btn">SETTINGS</button>
+        </div>
+      </div>
+    </div>
+    <div class="overlay"></div>
+    <div id="map"></div>
+    <div class="spots-content">
+      <div class="search-content">
+        <h1 class="locations">Locations</h1>
+        <div class="search">
+          <input type="text" placeholder="Search..." class="search-bar" />
+        </div>
+      </div>
+      <table class="container" ce>
+        <tr class="table-head">
+          <td class="th">Name</td>
+          <td class="th">Country</td>
+          <td class="th">Latitude</td>
+          <td class="th">Longitude</td>
+          <td class="th">Wind prob.</td>
+          <td class="th">When to go</td>
+        </tr>
+      </table>
+    </div>
+
+    <script src="/src/app.js"></script>
+    <script
+      async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqAVIOA2GO-BOsv55Kz6TkqUSBbSLTkNg&callback=initMap"
+    ></script>
+    <!-- <script
+      async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUCAI82csZWXvUMSOG1Mf9x3wA3WGxAcQ&libraries=places&callback=initMap"
+    ></script> -->
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/login.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="title">
+        <h1>Surfy</h1>
+      </div>
+      <div class="inputs sign-up-inputs">
+        <div class="input1">
+          <label for="username">Username</label>
+          <input type="text" id="username" class="user-input" />
+        </div>
+        <div class="input2">
+          <label for="email">Email</label>
+          <input type="email" id="email" class="user-input" />
+        </div>
+        <div class="input3">
+          <label for="password">Password</label>
+          <input type="password" id="password" class="user-input" />
+        </div>
+        <div class="input4">
+          <label for="conf-password">Confirm password</label>
+          <input type="password" id="conf-password" class="user-input" />
+        </div>
+      </div>
+      <div class="avatars inputs">
+        <button class="previous" data-previous>previous</button>
+        <div class="show-avatars" data-show-avatars></div>
+        <input type="hidden" data-avatar-input />
+      </div>
+      <div class="login-btn">
+        <button class="btn">Next</button>
+      </div>
+      <div class="sign-up">
+        <a href="login.html" id="sign-up-btn">Already have an account? Login</a>
+      </div>
+    </div>
+    <script src="/src/sign_up.js"></script>
+  </body>
+</html>
