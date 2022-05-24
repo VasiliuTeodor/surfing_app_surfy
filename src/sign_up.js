@@ -1,13 +1,23 @@
+import selectElement from "./utility_func.js";
+
 const getUsers = "https://6232e7d76de3467dbac2d149.mockapi.io/user";
 const signUpBtn = document.querySelector(".btn");
 
-function selectElement(selector, parent = document) {
-  return parent.querySelector(selector);
-}
-
 // Avatars
 
-async function showAvatars() {
+// const steps = [...document.querySelectorAll("[data-step]")];
+
+// let currentStep = steps.findIndex((step) => {
+//   return step.classList.contains("active");
+// });
+
+// if (currentStep < 0) {
+//   currentStep = 0;
+//   steps[currentStep].classList.add("active");
+// }
+
+async function showNext() {
+  // shows the avatar container
   try {
     const avatarUrl = await fetch(
       "https://6232e7d76de3467dbac2d149.mockapi.io/avatars"
@@ -27,20 +37,21 @@ async function showAvatars() {
     nextPageAvatars.classList.add("active");
     signUpInputs.classList.add("inactive");
 
-    selectElement("[data-show-avatars]").innerHTML = userAvatar;
+    selectElement("[data-avatars-container]").innerHTML = userAvatar;
   } catch (error) {
     console.log(error);
   }
 }
 
 function showPrevious() {
+  // shows the input container
   const nextPageAvatars = selectElement(".avatars");
   const signUpInputs = selectElement(".sign-up-inputs");
   nextPageAvatars.classList.remove("active");
   signUpInputs.classList.remove("inactive");
 
   signUpBtn.removeEventListener("click", clickSignUp);
-  signUpBtn.addEventListener("click", showAvatars);
+  signUpBtn.addEventListener("click", showNext);
   signUpBtn.innerText = "Next";
 }
 
@@ -99,13 +110,13 @@ const clickSignUp = async (event) => {
   }
 };
 
-signUpBtn.addEventListener("click", showAvatars);
+signUpBtn.addEventListener("click", showNext);
 // add new event listener to allow signing up
 document.addEventListener("click", (event) => {
   const click = event.target;
 
   if (click.matches(".btn")) {
-    signUpBtn.removeEventListener("click", showAvatars);
+    signUpBtn.removeEventListener("click", showNext);
     signUpBtn.addEventListener("click", clickSignUp);
     signUpBtn.innerText = "Sign up";
   }
@@ -125,7 +136,7 @@ window.addEventListener("keyup", (event) => {
     }
   } else {
     if (event.key == "Enter") {
-      showAvatars();
+      showNext();
     }
   }
 });

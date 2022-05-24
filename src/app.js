@@ -1,6 +1,5 @@
 const searchBar = document.querySelector(".search-bar");
 const spotsList = document.querySelector(".container");
-let spots = [];
 
 function checkLogin() {
   const userLogo = document.querySelector(".logout-btn");
@@ -17,7 +16,7 @@ const getSpots = async () => {
   try {
     const getAllSpots = "https://6232e7d76de3467dbac2d149.mockapi.io/spot";
     const response = await fetch(getAllSpots);
-    spots = await response.json();
+    const spots = await response.json();
 
     displaySpots(spots);
   } catch (error) {
@@ -27,7 +26,7 @@ const getSpots = async () => {
 
 window.addEventListener("load", getSpots);
 
-const displaySpots = (event) => {
+const displaySpots = (spots) => {
   const spotsTable = spots
     .map((spot) => {
       return `
@@ -60,8 +59,8 @@ document.querySelector(".logout-btn").addEventListener("click", () => {
   }
 });
 
-searchBar.addEventListener("keyup", (event) => {
-  const filteredSpots = spots.filter((spot) => {
+searchBar.addEventListener("keyup", (spots) => {
+  const filteredSpots = [spots].filter((spot) => {
     return spot.name.toLowerCase().includes(searchBar.value);
   });
   console.log(filteredSpots);

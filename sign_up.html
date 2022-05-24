@@ -12,7 +12,7 @@
       <div class="title">
         <h1>Surfy</h1>
       </div>
-      <div class="inputs sign-up-inputs">
+      <div class="inputs sign-up-inputs" data-step>
         <div class="input1">
           <label for="username">Username</label>
           <input type="text" id="username" class="user-input" />
@@ -30,18 +30,18 @@
           <input type="password" id="conf-password" class="user-input" />
         </div>
       </div>
-      <div class="avatars inputs">
+      <div class="avatars inputs" data-step>
         <button class="previous" data-previous>previous</button>
-        <div class="show-avatars" data-show-avatars></div>
+        <div class="show-avatars" data-avatars-container></div>
         <input type="hidden" data-avatar-input />
       </div>
       <div class="login-btn">
-        <button class="btn">Next</button>
+        <button class="btn" data-next>Next</button>
       </div>
       <div class="sign-up">
         <a href="login.html" id="sign-up-btn">Already have an account? Login</a>
       </div>
     </div>
-    <script src="/src/sign_up.js"></script>
+    <script type="module" src="/src/sign_up.js"></script>
   </body>
 </html>
