@@ -39,6 +39,7 @@ async function loadAvatars() {
 }
 loadAvatars();
 
+// goes between the inputs and the avatars container
 function showCurrentStep() {
   const nextBtn = selectElement("[data-next]");
   const previousBtn = selectElement("[data-previous]");
@@ -67,6 +68,7 @@ document.addEventListener("click", (event) => {
   showCurrentStep();
 });
 
+// assigns avatars to hidden input on img click
 function assignAvatars(event) {
   const click = event.target;
 
