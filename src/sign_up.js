@@ -1,22 +1,22 @@
 import selectElement from "./utility_func.js";
 
 const getUsers = "https://6232e7d76de3467dbac2d149.mockapi.io/user";
-const signUpBtn = document.querySelector(".btn");
+const signUpBtn = document.querySelector("[data-sign-up]");
 
 // Avatars
 
-// const steps = [...document.querySelectorAll("[data-step]")];
+const steps = [...document.querySelectorAll("[data-step]")];
 
-// let currentStep = steps.findIndex((step) => {
-//   return step.classList.contains("active");
-// });
+let currentStep = steps.findIndex((step) => {
+  return step.classList.contains("active");
+});
 
-// if (currentStep < 0) {
-//   currentStep = 0;
-//   steps[currentStep].classList.add("active");
-// }
+if (currentStep < 0) {
+  currentStep = 0;
+  steps[currentStep].classList.add("active");
+}
 
-async function showNext() {
+async function loadAvatars() {
   // shows the avatar container
   try {
     const avatarUrl = await fetch(
@@ -32,28 +32,40 @@ async function showNext() {
       )
       .join("");
 
-    const nextPageAvatars = selectElement(".avatars");
-    const signUpInputs = selectElement(".sign-up-inputs");
-    nextPageAvatars.classList.add("active");
-    signUpInputs.classList.add("inactive");
-
     selectElement("[data-avatars-container]").innerHTML = userAvatar;
   } catch (error) {
     console.log(error);
   }
 }
+loadAvatars();
 
-function showPrevious() {
-  // shows the input container
-  const nextPageAvatars = selectElement(".avatars");
-  const signUpInputs = selectElement(".sign-up-inputs");
-  nextPageAvatars.classList.remove("active");
-  signUpInputs.classList.remove("inactive");
+function showCurrentStep() {
+  const nextBtn = selectElement("[data-next]");
+  const previousBtn = selectElement("[data-previous]");
 
-  signUpBtn.removeEventListener("click", clickSignUp);
-  signUpBtn.addEventListener("click", showNext);
-  signUpBtn.innerText = "Next";
+  if (currentStep === 0) {
+    previousBtn.classList.add("hidden");
+    nextBtn.classList.remove("hidden");
+  } else {
+    previousBtn.classList.remove("hidden");
+    nextBtn.classList.add("hidden");
+  }
+
+  steps.forEach((step, index) => {
+    step.classList.toggle("active", index === currentStep);
+  });
 }
+
+document.addEventListener("click", (event) => {
+  const click = event.target;
+
+  if (click.matches("[data-next]")) {
+    currentStep += 1;
+  } else if (click.matches("[data-previous]")) {
+    currentStep -= 1;
+  }
+  showCurrentStep();
+});
 
 function assignAvatars(event) {
   const click = event.target;
@@ -66,7 +78,6 @@ function assignAvatars(event) {
 }
 
 document.addEventListener("click", assignAvatars);
-selectElement("[data-previous]").addEventListener("click", showPrevious);
 
 // Sign up
 
@@ -110,17 +121,7 @@ const clickSignUp = async (event) => {
   }
 };
 
-signUpBtn.addEventListener("click", showNext);
-// add new event listener to allow signing up
-document.addEventListener("click", (event) => {
-  const click = event.target;
-
-  if (click.matches(".btn")) {
-    signUpBtn.removeEventListener("click", showNext);
-    signUpBtn.addEventListener("click", clickSignUp);
-    signUpBtn.innerText = "Sign up";
-  }
-});
+signUpBtn.addEventListener("click", clickSignUp);
 
 // allow enter key to execute sign up
 window.addEventListener("keyup", (event) => {
@@ -136,7 +137,7 @@ window.addEventListener("keyup", (event) => {
     }
   } else {
     if (event.key == "Enter") {
-      showNext();
+      showCurrentStep();
     }
   }
 });

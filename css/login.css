@@ -47,6 +47,13 @@ body {
   background-color: white;
 }
 
+.sign-up-inputs {
+  position: absolute;
+  margin-right: -3000px;
+  visibility: hidden;
+  overflow: hidden;
+}
+
 input {
   padding: 2px 30px 2px 4px;
   border: 1px solid gray;
@@ -57,6 +64,9 @@ h1 {
   font-family: "Dancing Script", cursive;
   font-size: 60px;
   font-weight: 100;
+}
+.sign-up-title {
+  margin-bottom: 120px;
 }
 a {
   color: rgb(124, 99, 99);
@@ -99,38 +109,15 @@ a:hover {
   gap: 10px;
   max-width: fit-content;
 }
-.avatars {
-  position: absolute;
-  margin-right: -3000px;
-  visibility: hidden;
-  overflow: hidden;
-}
-.avatars.active {
+
+.sign-up-inputs.active {
   visibility: visible;
   margin-left: -3000px;
   transition: 600ms ease-in;
 }
-.sign-up-inputs.inactive {
-  animation: fade-out 500ms ease-in-out forwards;
+.hidden {
+  display: none;
 }
-
-@keyframes fade-out {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(0.75);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(0);
-    opacity: 0;
-  }
-}
-.previous {
-  border: none;
-  background-color: transparent;
-  display: flex;
-  justify-self: flex-start;
-  cursor: pointer;
+.sign-up-btn {
+  margin-top: 150px;
 }

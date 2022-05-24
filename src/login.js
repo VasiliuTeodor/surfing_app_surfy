@@ -17,7 +17,7 @@ const clickLogin = async (event) => {
     ) {
       // TO DO
       localStorage.setItem("user", user.id);
-      location.href = "index.html";
+      location.href = "/index.html";
       return;
     }
   });

@@ -10,9 +10,9 @@
   <body>
     <div class="container">
       <div class="title">
-        <h1>Surfy</h1>
+        <h1 class="sign-up-title">Surfy</h1>
       </div>
-      <div class="inputs sign-up-inputs" data-step>
+      <div class="sign-up-inputs inputs" data-step>
         <div class="input1">
           <label for="username">Username</label>
           <input type="text" id="username" class="user-input" />
@@ -30,13 +30,14 @@
           <input type="password" id="conf-password" class="user-input" />
         </div>
       </div>
-      <div class="avatars inputs" data-step>
-        <button class="previous" data-previous>previous</button>
+      <div class="avatars sign-up-inputs inputs" data-step>
         <div class="show-avatars" data-avatars-container></div>
         <input type="hidden" data-avatar-input />
       </div>
       <div class="login-btn">
-        <button class="btn" data-next>Next</button>
+        <button class="btn hidden sign-up-btn" data-previous>previous</button>
+        <button class="btn sign-up-btn" data-sign-up>Sign up</button>
+        <button class="btn sign-up-btn" data-next>Next</button>
       </div>
       <div class="sign-up">
         <a href="login.html" id="sign-up-btn">Already have an account? Login</a>
